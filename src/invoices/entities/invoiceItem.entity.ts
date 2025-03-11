@@ -3,29 +3,31 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
-} from 'typeorm'
-import { Invoice } from './invoice.entity'
+} from 'typeorm';
+import { Invoice } from './invoice.entity';
+import { Products } from 'src/products/products.entity';
 
 @Entity()
 export class InvoiceItem {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  price: number
+  price: number;
 
   @Column()
-  qty: number
+  qty: number;
 
-  @Column()
-  product_id: number
+  @OneToMany(() => Products, (product) => product.id)
+  product: Products;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
 
   @ManyToOne(() => Invoice)
-  @JoinColumn({ name: 'invoice_id' })
-  invoice: Invoice
+  invoice: Invoice;
 }

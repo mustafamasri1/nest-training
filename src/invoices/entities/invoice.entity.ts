@@ -26,6 +26,7 @@ export class Invoice {
   @JoinColumn({ name: 'user_id' })
   user: Users
 
+
   @OneToMany(() => InvoiceItem, (item) => item.invoice, { cascade: true })
   items: InvoiceItem[]
 }
