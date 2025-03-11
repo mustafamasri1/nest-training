@@ -1,11 +1,12 @@
-import { Controller } from '@nestjs/common'
+import { Controller, Get } from '@nestjs/common'
 import { InvoicesService } from './invoices.service'
 
 @Controller('invoices')
 export class InvoicesController {
-  constructor (private invoicesService: InvoicesService) {}
+  constructor(private readonly invoicesService: InvoicesService) { }
 
-  async getAll () {
-    return 'asd'
+  @Get()
+  async getAll() {
+    return this.invoicesService.getAll()
   }
 }

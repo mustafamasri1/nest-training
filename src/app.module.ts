@@ -14,7 +14,7 @@ import { ProductsModule } from './products/products.module';
       host: process.env.DB_HOST,
       port: parseInt(process.env.DB_PORT || '3306'),
       username: 'root',
-      password: '1234',
+      password: 'password',
       database: 'new_schema',
       autoLoadEntities: true, // Add all entities automatically
       synchronize: true, // Auto sync DB schema (disable in production)
@@ -24,4 +24,4 @@ import { ProductsModule } from './products/products.module';
     ProductsModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }

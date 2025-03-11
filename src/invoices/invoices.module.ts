@@ -5,9 +5,10 @@ import { Invoice } from './entities/invoice.entity';
 import { InvoicesService } from './invoices.service';
 import { DataSource } from 'typeorm';
 import { UsersRepository } from 'src/users/users.repository';
+import { InvoiceItem } from './entities/invoiceItem.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Invoice])],
+  imports: [TypeOrmModule.forFeature([Invoice, InvoiceItem])],
   controllers: [InvoicesController],
   providers: [
     InvoicesService,

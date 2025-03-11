@@ -1,10 +1,13 @@
-import { IsNumber, IsString } from 'class-validator'
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator'
 
 export class ProductUpdateDto {
   @IsString()
-  title?: string
+  @IsNotEmpty()
+  title: string
   @IsNumber()
-  price?: number
+  @IsNotEmpty()
+  price: number
   @IsString()
-  description?: string
+  @IsNotEmpty()
+  description: string
 }

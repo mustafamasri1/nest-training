@@ -6,8 +6,12 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  OneToMany,
+  PrimaryGeneratedColumn
 } from 'typeorm'
+import { InvoiceItem } from './invoiceItem.entity'
+
+
 @Entity()
 export class Invoice {
   @PrimaryGeneratedColumn()
@@ -21,4 +25,7 @@ export class Invoice {
   @ManyToOne(() => Users)
   @JoinColumn({ name: 'user_id' })
   user: Users
+
+  @OneToMany(() => InvoiceItem, (item) => item.invoice, { cascade: true })
+  items: InvoiceItem[]
 }

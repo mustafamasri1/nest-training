@@ -24,6 +24,7 @@ export class InvoiceItem {
 
   @CreateDateColumn()
   created_at: Date
+
   @ManyToOne(() => Invoice)
   @JoinColumn({ name: 'invoice_id' })
   invoice: Invoice
