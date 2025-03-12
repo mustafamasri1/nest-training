@@ -1,5 +1,5 @@
-import { IsDate } from 'class-validator'
-import { Users } from 'src/users/users.entity'
+import { IsDate } from 'class-validator';
+import { Users } from 'src/users/users.entity';
 import {
   Column,
   CreateDateColumn,
@@ -7,26 +7,24 @@ import {
   JoinColumn,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn
-} from 'typeorm'
-import { InvoiceItem } from './invoiceItem.entity'
-
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { InvoiceItem } from './invoiceItem.entity';
 
 @Entity()
 export class Invoice {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
   @Column()
-  due_date: Date
+  due_date: Date;
 
   @ManyToOne(() => Users)
   @JoinColumn({ name: 'user_id' })
-  user: Users
-
+  user: Users;
 
   @OneToMany(() => InvoiceItem, (item) => item.invoice, { cascade: true })
-  items: InvoiceItem[]
+  items: InvoiceItem[];
 }

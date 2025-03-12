@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { Invoice } from './invoice.entity';
 import { Products } from 'src/products/products.entity';
+import { IsNotEmpty } from 'class-validator';
 
 @Entity()
 export class InvoiceItem {
@@ -22,7 +23,8 @@ export class InvoiceItem {
   @Column()
   qty: number;
 
-  @OneToMany(() => Products, (product) => product.id)
+  @ManyToOne(() => Products, (product) => product.id)
+  @JoinColumn({ name: 'product_id' })
   product: Products;
 
   @CreateDateColumn()

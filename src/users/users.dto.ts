@@ -1,7 +1,8 @@
-import { IsEmail, IsIP, IsString } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export class UsersDto {
-  @IsString({ message: 'asd' })
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @IsEmail()

@@ -13,6 +13,6 @@ export class UsersController {
   @Get()
   async getAllUsers(@Query() queries) {
     const users = await this.usersService.getAll();
-    return users
+    return users;
   }
 }

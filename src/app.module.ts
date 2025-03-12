@@ -24,4 +24,4 @@ import { ProductsModule } from './products/products.module';
     ProductsModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
