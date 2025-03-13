@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { UsersDto } from './users.dto';
 import { UsersService } from './users.service';
 
@@ -7,12 +7,16 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
   @Post()
   async create(@Body() usersDto: UsersDto) {
-    return this.usersService.create(usersDto.name, usersDto.email);
+    return this.usersService.create(usersDto);
   }
 
   @Get()
-  async getAllUsers(@Query() queries) {
-    const users = await this.usersService.getAll();
-    return users;
+  async getAllUsers() {
+    return this.usersService.getAll();
+  }
+
+  @Get(':id')
+  async getOneUser(@Param('id') id: number) {
+    return this.usersService.findById(id);
   }
 }

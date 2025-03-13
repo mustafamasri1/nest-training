@@ -10,29 +10,18 @@ export class ProductsService {
   ) {}
 
   async create(createDto: ProductsDto) {
-    let product = this.productsRepo.create(createDto);
-
-    return this.productsRepo.save(product);
+    return await this.productsRepo.createProduct(createDto);
   }
 
   async delete(id: number) {
-    return this.productsRepo.delete({ id });
+    return await this.productsRepo.deleteOne(id);
   }
 
   async getAll() {
-    return this.productsRepo.find();
+    return await this.productsRepo.getAll();
   }
 
   async update(id: number, updateDto: ProductsDto) {
-    let product = await this.productsRepo.findOneBy({ id });
-    if (product) {
-      product.title = updateDto.title;
-      product.price = updateDto.price;
-      product.description = updateDto.description;
-
-      this.productsRepo.update(id, product);
-    } else {
-      throw 'Error while saving product';
-    }
+    return await this.productsRepo.updateOne(id, updateDto);
   }
 }

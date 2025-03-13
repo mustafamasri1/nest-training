@@ -27,20 +27,12 @@ export class InvoicesService {
   }
 
   async create(createDto: InvoiceCreateDto) {
-    const user = await this.userRepo.findOne({ where: { id: 1 } });
-    if (!user) throw new Error('USER NOT FOUND');
+    const user = await this.userRepo.findById(1);
 
     const items = await Promise.all(
       createDto.items.map(async (item) => {
-        const product = await this.productsRepo.findOne({
-          where: { id: item.product_id },
-        });
+        const product = await this.productsRepo.findById(item.product_id);
 
-        if (!product) {
-          throw new Error(`Product with ID ${item.product_id} not found`);
-        }
-
-        console.log(product);
         return this.invoiceItemsRepo.create({
           price: item.price,
           qty: item.qty,
@@ -49,12 +41,6 @@ export class InvoicesService {
       }),
     );
 
-    const invoice = this.invoicesRepo.create({
-      due_date: new Date(),
-      user,
-      items,
-    });
-
-    return this.invoicesRepo.save(invoice);
+    return this.invoicesRepo.createInvoice(user, items);
   }
 }

@@ -1,6 +1,11 @@
-import { Inject, Injectable } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { UsersRepository } from './users.repository';
 import { Users } from './users.entity';
+import { UsersDto } from './users.dto';
 
 @Injectable()
 export class UsersService {
@@ -8,11 +13,14 @@ export class UsersService {
     @Inject('USERS_REPOSITORY')
     private readonly usersRepository: UsersRepository,
   ) {}
-  async create(name: string, email: string): Promise<Users> {
-    const user = this.usersRepository.create({ name, email });
-    return this.usersRepository.save(user);
+
+  async create(createDto: UsersDto): Promise<Users> {
+    return this.usersRepository.createUser(createDto);
   }
   async getAll() {
     return this.usersRepository.find();
+  }
+  async findById(id: number) {
+    return this.usersRepository.findById(id);
   }
 }
