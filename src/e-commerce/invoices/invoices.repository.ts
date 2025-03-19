@@ -2,7 +2,6 @@ import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { Invoice } from './entities/invoice.entity';
 import { Users } from 'src/users/users.entity';
-import { InvoiceCreateDto } from './invoices.dto';
 import { InvoiceItem } from './entities/invoiceItem.entity';
 
 @Injectable()

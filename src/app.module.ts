@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
-import { InvoicesModule } from './invoices/invoices.module';
-import { ProductsModule } from './products/products.module';
+import { InvoicesModule } from './e-commerce/invoices/invoices.module';
+import { ProductsModule } from './e-commerce/products/products.module';
+import { BooksModule } from './library/books/books.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,6 +23,7 @@ import { ProductsModule } from './products/products.module';
     UsersModule,
     InvoicesModule,
     ProductsModule,
+    BooksModule,
   ],
 })
 export class AppModule {}

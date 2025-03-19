@@ -19,7 +19,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
         .json(exception.getResponse());
     }
 
-    console.error('Unexpected error:', exception); // Log the actual error for debugging
+    console.error('Unexpected error:', exception); 
 
     // Return a generic 500 error if it's an unknown exception
     return response

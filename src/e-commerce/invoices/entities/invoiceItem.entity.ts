@@ -9,7 +9,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Invoice } from './invoice.entity';
-import { Products } from 'src/products/products.entity';
+import { Products } from 'src/e-commerce/products/products.entity';
 import { IsNotEmpty } from 'class-validator';
 
 @Entity()

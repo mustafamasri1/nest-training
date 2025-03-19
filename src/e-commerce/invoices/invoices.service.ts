@@ -5,7 +5,7 @@ import { InvoiceItem } from './entities/invoiceItem.entity';
 import { Repository } from 'typeorm';
 import { InvoiceCreateDto } from './invoices.dto';
 import { UsersRepository } from 'src/users/users.repository';
-import { ProductsRepository } from 'src/products/products.repository';
+import { ProductsRepository } from 'src/e-commerce/products/products.repository';
 
 @Injectable()
 export class InvoicesService {
@@ -14,7 +14,7 @@ export class InvoicesService {
     private readonly invoicesRepo: InvoicesRepository,
     @InjectRepository(InvoiceItem)
     private readonly invoiceItemsRepo: Repository<InvoiceItem>,
-    @Inject('USER_REPOSITORY')
+    @Inject('USERS_REPOSITORY')
     private readonly userRepo: UsersRepository,
     @Inject('PRODUCTS_REPOSITORY')
     private readonly productsRepo: ProductsRepository,

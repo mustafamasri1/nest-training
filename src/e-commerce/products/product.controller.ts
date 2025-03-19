@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { ProductsDto } from './products.dto';
+import { ApiBody } from '@nestjs/swagger';
 
 @Controller('products')
 export class ProductsController {

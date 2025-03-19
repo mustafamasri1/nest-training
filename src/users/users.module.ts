@@ -17,6 +17,6 @@ import { UsersService } from './users.service';
       inject: [DataSource],
     },
   ],
-  exports: ['USERS_REPOSITORY'],
+  exports: [UsersService, 'USERS_REPOSITORY'],
 })
 export class UsersModule {}
